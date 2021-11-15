@@ -16,7 +16,7 @@ const hpp = require('hpp') // http params pollutions
 const cookieParser = require('cookie-parser')
 const app = express();
 
-
+// Start express app
 // views
 app.set('view engine','pug')
 // set views path
