@@ -15,7 +15,7 @@ const xss = require('xss-clean')
 const hpp = require('hpp') // http params pollutions
 const cookieParser = require('cookie-parser')
 const app = express();
-
+app.use(helmet({ contentSecurityPolicy: false }))
 // Start express app
 // views
 app.set('view engine','pug')
@@ -24,11 +24,16 @@ app.set('view engine','pug')
 app.set('views',path.join(__dirname , 'views') )
 
 // 1) Global MIDDLEWARES
+// app.use(function(req, res, next) { 
+//   res.setHeader( 'Content-Security-Policy', "script-src 'self' api.mapbox.com"); 
+//   return next(); 
+// });
+
 // serving for static files
 // app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname,'/public')));
 // Set Security http headers
-app.use(helmet())
+// app.use(helmet())
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {

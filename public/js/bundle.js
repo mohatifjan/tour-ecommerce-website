@@ -3240,42 +3240,42 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+var stripe = Stripe('pk_test_51JviWjK64WAPsiWiW6VaoDxpiMuMhASttBqE5x8c847AQL0IdNPu8XbFvxjo34o27qGnf0cabdXmfJ4gLVjWeBVd005UZbpuAW');
+
 var bookTour = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(tourId) {
-    var stripe, session;
+    var session;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            stripe = Stripe('pk_test_51JviWjK64WAPsiWiW6VaoDxpiMuMhASttBqE5x8c847AQL0IdNPu8XbFvxjo34o27qGnf0cabdXmfJ4gLVjWeBVd005UZbpuAW'); // 1) Get Checkout session from API
+            _context.next = 3;
+            return (0, _axios.default)("/api/v1/bookings/checkout-session/".concat(tourId));
 
-            _context.next = 4;
-            return (0, _axios.default)("http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId));
-
-          case 4:
+          case 3:
             session = _context.sent;
-            _context.next = 7;
+            _context.next = 6;
             return stripe.redirectToCheckout({
               sessionId: session.data.session.id
             });
 
-          case 7:
-            console.log(test);
-            _context.next = 13;
+          case 6:
+            _context.next = 12;
             break;
 
-          case 10:
-            _context.prev = 10;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
             (0, _alerts.showAlert)('error', _context.t0);
 
-          case 13:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function bookTour(_x) {
@@ -3384,13 +3384,11 @@ if (userPasswordForm) {
   }());
 }
 
-if (bookBtn) {
-  bookBtn.addEventListener('click', function (e) {
-    e.target.textContent = 'Processing...';
-    var tourId = e.target.dataset.tourId;
-    (0, _stripe.bookTour)(tourId);
-  });
-}
+if (bookBtn) bookBtn.addEventListener('click', function (e) {
+  e.target.textContent = 'Processing...';
+  var tourId = e.target.dataset.tourId;
+  (0, _stripe.bookTour)(tourId);
+});
 },{"regenerator-runtime/runtime":"../../node_modules/regenerator-runtime/runtime.js","./mapBox":"mapBox.js","./login":"login.js","./updateSettings":"updateSettings.js","./stripe":"stripe.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -3419,7 +3417,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52715" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65347" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
