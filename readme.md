@@ -1,3 +1,3 @@
 # Natours Applicatioin
 
-Built in using several technologies : node js , express, mongodb and mongoose and for frontEnd pug
+Built in using several technologies : node js , express, mongodb and mongoose and pug for frontEnd.
